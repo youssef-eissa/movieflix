@@ -1,0 +1,10 @@
+
+
+.logo{
+font-family: 'Martian Mono', monospace;
+    color: white;
+    font-size: 50px;
+}
+.logo span{
+    color: crimson;
+}

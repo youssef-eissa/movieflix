@@ -1,0 +1,9 @@
+.MovieInfo{
+font-family: 'Space Grotesk',sans-serif;
+    }
+.MovieInfo h1{
+        color: crimson;
+}
+.MovieInfo p{
+    font-size: 20px;
+}
