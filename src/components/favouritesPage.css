@@ -1,0 +1,19 @@
+
+.favouritesContainer h1{
+        text-shadow: 1px 0 10px crimson;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.favouritesContainer h2{
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.favouritesContainer p{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+}
+
+.emptyFavourites{
+    height: 500px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 50px;
+}

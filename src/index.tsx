@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Provider } from 'react-redux'
 import { ApiProvider } from '@reduxjs/toolkit/query/react'
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
@@ -14,15 +16,17 @@ import storage from 'redux-persist/lib/storage';
 import { BrowserRouter } from 'react-router-dom';
 import popularMoviesApi from './redux/PopularMovies';
 import { MovieReducer } from './redux/SingleMovie';
+import { FavouritesReducer } from './redux/Favourites';
 
 const persistConfig = {
   key: 'root',
   version: 1,
-  whitelist: ['TheMovie'],
+  whitelist: ['TheMovie', 'FavouritesArray'],
   storage,
 }
 const reducer=combineReducers({
-  TheMovie:MovieReducer,
+  TheMovie: MovieReducer,
+  FavouritesArray: FavouritesReducer,
   [popularMoviesApi.reducerPath]:popularMoviesApi.reducer
 })
 const thePersisReducer = persistReducer(persistConfig, reducer)

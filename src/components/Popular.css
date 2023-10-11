@@ -21,3 +21,24 @@
     background-color: rgb(51, 51, 51);
     color: white;
 }
+.SlideMovieInfo{
+    bottom: 0;
+    left: 0;
+    height: 0;
+    overflow: hidden;
+    background-color: rgb(0 0 0 / 20%);
+    transition: 0.3s;
+}
+.SlideMovieBox:hover .SlideMovieInfo{
+    height: 100%;
+}
+
+.SlideMovieLink{
+    background-color: crimson;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.SlideMovieLink:hover{
+    background-color: rgb(51, 51, 51);
+}
