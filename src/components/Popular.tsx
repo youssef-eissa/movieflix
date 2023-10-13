@@ -32,7 +32,7 @@ function Popular({ Movies, Title, favourites }: TPopularProps) {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-        slidesToScroll: 1,
+    slidesToScroll: 1,
     responsive: [{
     breakpoint: 1700,
     settings: {
@@ -42,7 +42,7 @@ function Popular({ Movies, Title, favourites }: TPopularProps) {
     }
     }]
 
-    };
+    }
 
 return (
     <div className="container-fluid">
@@ -55,7 +55,7 @@ return (
             <div className="col-12 p-0 d-flex flex-column align-items-center justify-content-center mb-5">
                 <div className="col-10 rounded overflow-hidden ">
                 <Carousel effect="fade" dots={false} autoplay={true}>
-                {Movies.map((movie:any) => {
+                {Movies.map((movie:singleMovie) => {
                     return <div key={movie.id} className="carouselBox col-12 position-relative">
                         <img alt="movieImg" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="img-fluid h-100 w-100 " />
                     <Link reloadDocument onClick={()=>handleMovie(movie)} className="col-2 text-center py-2 position-absolute toMovie z-3" to='/movie'>Show Film</Link>
@@ -65,7 +65,7 @@ return (
                 </div>
                 <div className="col-10 mt-5">
                     <Slider className="col-12  "  {...settings}>
-                    {Movies.map((movie:any) => {
+                    {Movies.map((movie:singleMovie) => {
                         return <div key={movie.id} className="col-12 d-flex justify-content-center">
                             <div className="col-9 position-relative SlideMovieBox">
                                 <img alt="movieImg" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="img-fluid" />

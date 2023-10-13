@@ -14,7 +14,7 @@ import { persistReducer, persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage';
 import { BrowserRouter } from 'react-router-dom';
-import popularMoviesApi from './redux/PopularMovies';
+import popularMoviesApi from './redux/MoviesAPI';
 import { MovieReducer } from './redux/SingleMovie';
 import { FavouritesReducer } from './redux/Favourites';
 

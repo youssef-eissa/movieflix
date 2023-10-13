@@ -30,7 +30,7 @@ return (
                 {Favourites.length>0?Favourites.map((movie: singleMovie) => {
                     return <div key={movie.id} className="col-11 mt-5 d-flex ">
                         <div className="col-4 rounded overflow-hidden">
-                            <img alt="img" src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className="img-fluid" />
+                            <img alt="img" src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className="img-fluid " />
                         </div>
                         <div className="col-6 d-flex flex-column p-2">
                             <h2 className="col-12">{movie.title}</h2>

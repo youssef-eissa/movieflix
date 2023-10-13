@@ -8,9 +8,12 @@ const popularMoviesApi = createApi({
     endpoints: (builder) => ({
         getPopularMovies: builder.query({
             query: () => '/movie/popular?api_key=e5a319653f57fe3b2a8b69afa1a4377f'
+        }),
+        getTopRatedMovies: builder.query({
+            query:()=>'/movie/top_rated?api_key=e5a319653f57fe3b2a8b69afa1a4377f'
         })
     })
 })
 
 export default popularMoviesApi
-export const { useGetPopularMoviesQuery } = popularMoviesApi
+export const { useGetPopularMoviesQuery,useGetTopRatedMoviesQuery } = popularMoviesApi
