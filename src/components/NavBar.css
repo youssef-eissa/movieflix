@@ -1,10 +1,16 @@
-
-
 .logo{
 font-family: 'Martian Mono', monospace !important;
     color: white;
     font-size: 50px;
 }
 .logo span{
+    color: crimson;
+}
+.ToContact{
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.ToContact:hover{
     color: crimson;
 }

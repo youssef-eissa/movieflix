@@ -1,0 +1,13 @@
+label{
+    font-size: 30px;
+}
+.contactPage{
+    min-height: 500px;
+}
+textarea{
+    resize: none;
+    border: none;
+}
+textarea:focus{
+    outline: none;
+}
