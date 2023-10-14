@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { TopRatedProps,singleMovie ,FavouritesArray} from "../types/App"
+import { TheMovie,singleMovie ,FavouritesArray} from "../types/App"
 import './TopRatedMovies.css'
 import Marquee from "react-fast-marquee";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ import { addFavourite } from "../redux/Favourites";
 
 
 type TTopMovies = {
-    TopRatedMovies: TopRatedProps;
+    TopRatedMovies: TheMovie;
     title: string;
     favourites: FavouritesArray;
 
@@ -24,11 +24,9 @@ function TopRatedMovies({ TopRatedMovies, title,favourites }: TTopMovies) {
         dispatch(getMovie(movie))
     }
     const settings = {
-    dots: false,
+    dots:false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
     responsive: [{
     breakpoint: 1700,
     settings: {
@@ -37,12 +35,11 @@ function TopRatedMovies({ TopRatedMovies, title,favourites }: TTopMovies) {
         initialSlide: 3
     }
     }]
-
     }
     function handleFavourite(movie:singleMovie){
         dispatch(addFavourite(movie))
     }
- function handleMovie(movie:singleMovie){
+function handleMovie(movie:singleMovie){
         dispatch(resetMovie())
         dispatch(getMovie(movie))
     }
@@ -62,7 +59,7 @@ return (
                     <Slider className="col-12" {...settings}>
                         {TopRatedMovies.map((movie: singleMovie) => {
                             return <div key={movie.id} className="col-12 d-flex justify-content-center movieContainer rounded " >
-                                <div onClick={(e)=>handleMoviePage(movie)} className="col-11 d-flex position-relative overflow-hidden rounded topRatedImgBox">
+                                <div onClick={()=>handleMoviePage(movie)} className="col-11 d-flex position-relative overflow-hidden rounded topRatedImgBox">
                                     <img className="img-fluid h-100 w-100" alt="movie" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
                                     <div className="col-12 TopRatedFabInfo d-flex align-items-center justify-content-center position-absolute flex-column ">
                                         <Fab onClick={()=>handleFavourite(movie)} className="col-12  FabTopRated " sx={{backgroundColor:'white'}} aria-label="like">

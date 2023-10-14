@@ -1,0 +1,15 @@
+.UpcomingMovieBox{
+    height: 500px;
+}
+.upcomingSlideMovieLink{
+    background-color: crimson;
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+    transition: 0.3s;
+}
+.upcomingSlideMovieLink:hover {
+    background-color: black;
+   
+}
+

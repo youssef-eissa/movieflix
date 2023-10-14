@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PopularProps,FavouritesArray, singleMovie } from "../types/App"
+import { TheMovie,FavouritesArray, singleMovie } from "../types/App"
 import './Popular.css'
 import { Carousel } from 'antd';
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ import { addFavourite } from "../redux/Favourites";
 
 
 type TPopularProps = {
-    Movies: PopularProps;
+    Movies: TheMovie;
     Title: string;
     favourites: FavouritesArray;
 
@@ -31,8 +31,6 @@ function Popular({ Movies, Title, favourites }: TPopularProps) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
     responsive: [{
     breakpoint: 1700,
     settings: {

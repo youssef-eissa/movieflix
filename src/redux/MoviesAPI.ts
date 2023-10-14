@@ -11,9 +11,12 @@ const popularMoviesApi = createApi({
         }),
         getTopRatedMovies: builder.query({
             query:()=>'/movie/top_rated?api_key=e5a319653f57fe3b2a8b69afa1a4377f'
+        }),
+        getUpcomingMovies: builder.query({
+            query:()=>'/movie/upcoming?api_key=e5a319653f57fe3b2a8b69afa1a4377f'
         })
     })
 })
 
 export default popularMoviesApi
-export const { useGetPopularMoviesQuery,useGetTopRatedMoviesQuery } = popularMoviesApi
+export const { useGetPopularMoviesQuery,useGetTopRatedMoviesQuery,useGetUpcomingMoviesQuery } = popularMoviesApi
