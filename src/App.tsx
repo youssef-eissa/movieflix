@@ -9,6 +9,7 @@ import { singleMovie ,FavouritesArray} from './types/App'
 import FavouritesPage from './components/FavouritesPage';
 import TopRatedMovies from './components/TopRatedMovies';
 import UpcomingMovies from './components/UpcomingMovies';
+import Footer from './components/Footer';
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path='/movie' element={<SingleMovie movie={TheMovie as singleMovie} />} />
         <Route path='/favourites' element={<FavouritesPage Favourites={Favourites as FavouritesArray} title='Favourites' />} />
       </Routes>
+      <Footer/>
   </div>
   );
 }
