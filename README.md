@@ -34,15 +34,7 @@ The MovieFlix website includes the following pages:
 <img alt='home' src='/src/screenshots/home4.png'>
 <img alt='about' src='/src/screenshots/movie.png'>
 <img alt='about' src='/src/screenshots/favourites.png.png'>
-<img alt='about' src='/src/screenshots/menu2.png'>
-<img alt='about' src='/src/screenshots/menu3.png'>
-<img alt='about' src='/src/screenshots/menu4.png'>
-<img alt='products' src='/src/screenshots/gallery1.png'>
-<img alt='products' src='/src/screenshots/gallery2.png'>
-<img alt='products' src='/src/screenshots/gallery3.png'>
-<img alt='contact' src='/src/screenshots/contact1.png'>
-<img alt='contact' src='/src/screenshots/contact2.png'>
-<img alt='contact' src='/src/screenshots/contact3.png'>
+<img alt='about' src='/src/screenshots/contact.png'>
 
 # Project Link
 
