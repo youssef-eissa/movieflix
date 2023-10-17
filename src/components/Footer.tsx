@@ -29,7 +29,7 @@ return (
                         onBlur={handleBlur}
                         value={values.firstname}
                         placeholder='Enter your name' />
-                    {errors.firstname && touched.firstname ? <p style={{color:'red'}} className='col-4 text-start'>{errors.firstname}</p> : null}
+                    {errors.firstname && touched.firstname ? <p style={{color:'red'}} className='col-md-4 col-11 text-start'>{errors.firstname}</p> : null}
                     <input
                         className='col-md-4 col-11 mb-3 p-2 rounded'
                         type='email'
@@ -38,7 +38,7 @@ return (
                         onBlur={handleBlur}
                         value={values.email}
                         placeholder='Enter your email' />
-                    {errors.email && touched.email ? <p style={{color:'red'}} className='col-4 text-start'>{errors.email}</p> : null}
+                    {errors.email && touched.email ? <p style={{color:'red'}} className='col-md-4 col-11 text-start'>{errors.email}</p> : null}
                     <input className='col-md-2 col-6 p-2 rounded' type='submit' value='Submit' />
 
                 </form>

@@ -28,7 +28,7 @@ return (
                 <h1 className='col-12 text-center title my-md-5 my-2'>Contact Us</h1>
                 <form onSubmit={handleSubmit} className='col-10 d-flex justify-content-between flex-wrap p-3'>
                     <div className='col-md-5 col-12'>
-                        <div className='col-12 d-flex flex-column mb-3'>
+                        <div className='col-12 d-flex flex-column mb-md-3 mb-0'>
                         <label htmlFor='firstname' className='col-12'>First Name</label>
                         <input
                         className='col-12 rounded p-2'
@@ -40,9 +40,9 @@ return (
                         placeholder='Enter your first name'
                         id='firstname'
                     />
-                    {errors.firstname && touched.firstname ? <p style={{ color: 'red' }} className='col-6 text-start my-2'>{errors.firstname}</p> : null}
+                    {errors.firstname && touched.firstname ? <p style={{ color: 'red' }} className='col-md-6 col-12 text-start my-2'>{errors.firstname}</p> : null}
                 </div>
-                    <div className='col-12 d-flex flex-column mb-3'>
+                    <div className='col-12 d-flex flex-column mb-md-3 mb-0'>
                         <label htmlFor='lastname' className='col-12'>Last Name</label>
                         <input
                         type='text'
@@ -54,9 +54,9 @@ return (
                         id='lastname'
                         className='col-12 rounded p-2'
                         />
-                        {errors.lastname && touched.lastname ? <p style={{ color: 'red' }} className='col-6 text-start my-2'>{errors.lastname}</p> : null}
+                        {errors.lastname && touched.lastname ? <p style={{ color: 'red' }} className='col-md-6 col-12 text-start my-md-2 mb-0'>{errors.lastname}</p> : null}
                     </div>
-                    <div className='col-12 d-flex flex-column mb-3'>
+                    <div className='col-12 d-flex flex-column mb-md-3 mb-0'>
                         <label htmlFor='email' className='col-12'>Email</label>
                         <input
                         type='text'
@@ -68,7 +68,7 @@ return (
                         id='email'
                         className='col-12 rounded p-2'
                         />
-                        {errors.email && touched.email ? <p style={{ color: 'red' }} className='col-6 text-start my-2'>{errors.email}</p> : null}
+                        {errors.email && touched.email ? <p style={{ color: 'red' }} className='col-md-6 col-12 text-start my-md-2 mb-0'>{errors.email}</p> : null}
                 </div>
                     </div>
                     <div className='col-md-6 col-12 d-flex justify-content-center flex-wrap '>
@@ -82,7 +82,7 @@ return (
                             onBlur={handleBlur}
                             value={values.message}
                         />
-                        {errors.message && touched.message ? <p style={{ color: 'red' }} className='col-12 text-start my-2'>{errors.message}</p> : null}
+                        {errors.message && touched.message ? <p style={{ color: 'red' }} className='col-12 text-start my-md-2 mb-0'>{errors.message}</p> : null}
                         <input type='submit' className='col-md-12 col-6 mt-2  p-2 rounded' value='Submit' />
                     </div>
                    

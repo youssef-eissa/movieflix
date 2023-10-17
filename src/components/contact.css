@@ -13,6 +13,9 @@ textarea:focus{
 }
 @media (max-width:768px) {
     .contactPage{
-        min-height: 750px;
+        min-height: 710px;
+    } 
+    input[type="submit"]:hover{
+        background-color: crimson !important;
     }
 }
