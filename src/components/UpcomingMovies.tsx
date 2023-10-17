@@ -25,6 +25,8 @@ function UpcomingMovies({ UpcomingMovies, title,favourites,hasNextPage,fetchNext
     function handleMovie(movie:singleMovie){
         dispatch(resetMovie())
         dispatch(getMovie(movie))
+        window.scrollTo({top:0,behavior:'smooth'})
+
     }
 
     const settings = {

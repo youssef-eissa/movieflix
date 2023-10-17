@@ -24,7 +24,7 @@ return (
     <div className='container contactPage'>
         <div className='row'>
             <div className='col-12 d-flex  justify-content-center p-0 flex-wrap'>
-                <Link className='col-10 text-start' style={{textDecoration:'none',color:'gray'}} to='/'>Back to home</Link>
+                <Link reloadDocument onClick={() => window.scrollTo({top:0,behavior:'smooth'})} className='col-10 text-start' style={{textDecoration:'none',color:'gray'}} to='/'>Back to home</Link>
                 <h1 className='col-12 text-center title my-md-5 my-2'>Contact Us</h1>
                 <form onSubmit={handleSubmit} className='col-10 d-flex justify-content-between flex-wrap p-3'>
                     <div className='col-md-5 col-12'>

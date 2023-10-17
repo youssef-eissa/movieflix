@@ -25,7 +25,7 @@ return (
     <div className="container">
         <div className="row">
             <div className="col-12 d-flex p-0 flex-column align-items-center  favouritesContainer ">
-                <Link reloadDocument to='/' className="col-10 mb-3" style={{textDecoration:'none', color:'gray'}}>Back to home</Link>
+                <Link onClick={() => window.scrollTo({top:0,behavior:'smooth'})} reloadDocument to='/' className="col-10 mb-3" style={{textDecoration:'none', color:'gray'}}>Back to home</Link>
                 <h1 className="col-12 text-center">{title}</h1>
                 {Favourites.length>0?Favourites.map((movie: singleMovie) => {
                     return <div key={movie.id} className="col-11 mt-md-5 mt-2 d-flex flex-column flex-md-row ">

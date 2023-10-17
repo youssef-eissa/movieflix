@@ -17,7 +17,7 @@ return (
         <div className='row'>
             <div className='col-12 p-2 d-flex flex-column flex-md-row justify-content-center'>
                 <div className="col-md-6 col-12 justify-content-center rounded overflow-hidden p-0 d-flex flex-wrap ">
-                    <Link reloadDocument to='/' className="col-md-3 col-10 mb-md-2 mb-3 d-flex align-self-start" style={{textDecoration:'none', color:'gray'}}>Back to home</Link>
+                    <Link onClick={() => window.scrollTo({top:0,behavior:'smooth'})} reloadDocument to='/' className="col-md-3 col-10 mb-md-2 mb-3 d-flex align-self-start" style={{textDecoration:'none', color:'gray'}}>Back to home</Link>
                     <div className="col-10 rounded overflow-hidden">
                         <img alt="movieImg" className="img-fluid w-100 h-100 " src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}/>
                 </div>

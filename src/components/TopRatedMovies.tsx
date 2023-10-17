@@ -56,6 +56,8 @@ function TopRatedMovies({ TopRatedMovies, title,favourites,hasNextPage,fetchNext
 function handleMovie(movie:singleMovie){
         dispatch(resetMovie())
         dispatch(getMovie(movie))
+        window.scrollTo({top:0,behavior:'smooth'})
+    
     }
 return (
     <div className="container-fluid mt-2">
@@ -86,7 +88,7 @@ return (
                                     <Fab onClick={()=>handleFavourite(movie)} className="col-12 FabTopRated"  sx={{backgroundColor:'white'}} aria-label="like">
                                     <FavoriteIcon sx={{color:favourites.includes(movie)?'crimson':'#DCDCDC',cursor:'pointer',transition:'0.3s'}} />
                                     </Fab>
-                                    <Link onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className="col-9 rounded mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
+                                    <Link reloadDocument onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className="col-9 rounded mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
                                 </div>
                             </div>
                         })}
