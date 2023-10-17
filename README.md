@@ -33,7 +33,7 @@ The MovieFlix website includes the following pages:
 <img alt='home' src='src/screenshots/home3.png'>
 <img alt='home' src='/src/screenshots/home4.png'>
 <img alt='about' src='/src/screenshots/movie.png'>
-<img alt='about' src='/src/screenshots/favourites.png.png'>
+<img alt='about' src='/src/screenshots/favourites.png'>
 <img alt='about' src='/src/screenshots/contact.png'>
 
 # Project Link
