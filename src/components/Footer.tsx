@@ -16,13 +16,13 @@ function Footer() {
         }
     })
 return (
-    <div style={{backgroundColor:'black'}} className='p-5 container-fluid'>
+    <div style={{backgroundColor:'black'}} className='p-md-5 p-4 container-fluid'>
         <div className='row'>
-            <div className='col-12 p-0 '>
+            <div className='col-12 p-2 '>
                 <h5 className='col-12 text-center mb-3'>Be the first to know about new Movies.</h5>
                 <form className='col-12 d-flex flex-column align-items-center' onSubmit={handleSubmit}>
                     <input
-                        className='col-4 mb-3 p-2 rounded'
+                        className='col-md-4 col-11 mb-3 p-2 rounded'
                         type='text'
                         name='firstname'
                         onChange={handleChange}
@@ -31,7 +31,7 @@ return (
                         placeholder='Enter your name' />
                     {errors.firstname && touched.firstname ? <p style={{color:'red'}} className='col-4 text-start'>{errors.firstname}</p> : null}
                     <input
-                        className='col-4 mb-3 p-2 rounded'
+                        className='col-md-4 col-11 mb-3 p-2 rounded'
                         type='email'
                         name='email'
                         onChange={handleChange}
@@ -39,7 +39,7 @@ return (
                         value={values.email}
                         placeholder='Enter your email' />
                     {errors.email && touched.email ? <p style={{color:'red'}} className='col-4 text-start'>{errors.email}</p> : null}
-                    <input className='col-2 p-2 rounded' type='submit' value='Submit' />
+                    <input className='col-md-2 col-6 p-2 rounded' type='submit' value='Submit' />
 
                 </form>
             </div>

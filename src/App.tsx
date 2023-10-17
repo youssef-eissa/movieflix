@@ -18,7 +18,7 @@ function App() {
 
   const TheMovie = useSelector<{ TheMovie: { movie: singleMovie } }>(state => state.TheMovie.movie)
 
-  const Favourites = useSelector<{ FavouritesArray: { Favourites: singleMovie[] } }>(state => state.FavouritesArray?.Favourites)
+  const Favourites = useSelector<{ FavouritesArray: { Favourites: singleMovie } }>(state => state.FavouritesArray?.Favourites)
 
   const {data:popularMovies,hasNextPage:PopularHasNextPage,isSuccess:popularMoviesSuccess,fetchNextPage:PopularfetchNextPage} = useInfiniteQuery(
     ['popularMovies'],
@@ -58,19 +58,23 @@ function App() {
     }
   )
   const UpcomingMoviesArray = UpcomingMoviesData?.pages.map(page => page.data.results)
+  
 
 
   return (
-        <div style={{backgroundColor:'rgb(51, 51, 51)',color:'white',fontFamily:'Space Grotesk,sans-serif'}}>
+        <div className='overflow-hidden' style={{backgroundColor:'rgb(51, 51, 51)',color:'white',fontFamily:'Space Grotesk,sans-serif'}}>
       <NavBar favourites={Favourites as FavouritesArray}  />
       <Routes>
         <Route path='/' element={
           <Home >
-            {popularMoviesSuccess && <Popular Movies={popularMoviesArray?.flat() as any} Title='Popular Movies' favourites={Favourites as FavouritesArray} hasNextPage={PopularHasNextPage as boolean} fetchNextPage={PopularfetchNextPage as any}  />}
+            {popularMoviesSuccess && <Popular Movies={popularMoviesArray?.flat() as TheMovie} Title='Popular Movies' favourites={Favourites as FavouritesArray} hasNextPage={PopularHasNextPage as boolean} fetchNextPage={PopularfetchNextPage as () => void} />}
+            
 
-            {TopMoviesSuccess && <TopRatedMovies favourites={Favourites as FavouritesArray} TopRatedMovies={TopRatedMoviesArray?.flat() as any} title='Top Rated Movies' hasNextPage={TopRatedHasNextPage as boolean} fetchNextPage={TopRatedfetchNextPage as any} />}
+            {TopMoviesSuccess && <TopRatedMovies favourites={Favourites as FavouritesArray} TopRatedMovies={TopRatedMoviesArray?.flat() as TheMovie} title='Top Rated Movies' hasNextPage={TopRatedHasNextPage as boolean} fetchNextPage={TopRatedfetchNextPage as () => void} />}
+            
 
-            {UpcomingMoviesSuccess&& <UpcomingMovies UpcomingMovies={UpcomingMoviesArray?.flat() as any} title='Upcoming Releases' favourites={Favourites as FavouritesArray}hasNextPage={UpcomingHasNextPage as boolean} fetchNextPage={UpcomingfetchNextPage as any}/>}
+            {UpcomingMoviesSuccess && <UpcomingMovies UpcomingMovies={UpcomingMoviesArray?.flat() as TheMovie} title='Upcoming Releases' favourites={Favourites as FavouritesArray} hasNextPage={UpcomingHasNextPage as boolean} fetchNextPage={UpcomingfetchNextPage as () => void} />}
+            
           </Home>}
 
         />

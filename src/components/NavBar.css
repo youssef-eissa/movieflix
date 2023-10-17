@@ -14,3 +14,14 @@ font-family: 'Martian Mono', monospace !important;
 .ToContact:hover{
     color: crimson;
 }
+@media (max-width:768px){
+    .logo{
+        font-size: 25px;
+    }
+    .ToContact{
+        font-size: 14px;
+    }
+    
+    
+    
+}

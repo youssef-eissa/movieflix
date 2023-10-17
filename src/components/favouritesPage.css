@@ -1,4 +1,6 @@
-
+.favouritesContainer {
+    min-height: 500px;
+}
 .favouritesContainer h1{
         text-shadow: 1px 0 10px crimson;
     font-family: 'Space Grotesk', sans-serif;
@@ -6,6 +8,7 @@
 .favouritesContainer h2{
     font-family: 'Space Grotesk', sans-serif;
 }
+
 
 .favouritesContainer p{
     font-family: 'Space Grotesk', sans-serif;
@@ -16,4 +19,13 @@
     height: 500px;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 50px;
+}
+@media (max-width:768px){
+    .emptyFavourites{
+        font-size: 25px;
+        height: 410px;
+    }
+    .favouritesContainer {
+        min-height: 200px !important;
+    }
 }

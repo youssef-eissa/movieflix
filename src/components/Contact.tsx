@@ -23,11 +23,11 @@ function Contact() {
 return (
     <div className='container contactPage'>
         <div className='row'>
-            <div className='col-12 d-flex justify-content-center p-0 flex-wrap'>
-                <Link className='col-12 text-start' style={{textDecoration:'none',color:'gray'}} to='/'>Back to home</Link>
-                <h1 className='col-12 text-center title my-5'>Contact Us</h1>
+            <div className='col-12 d-flex  justify-content-center p-0 flex-wrap'>
+                <Link className='col-10 text-start' style={{textDecoration:'none',color:'gray'}} to='/'>Back to home</Link>
+                <h1 className='col-12 text-center title my-md-5 my-2'>Contact Us</h1>
                 <form onSubmit={handleSubmit} className='col-10 d-flex justify-content-between flex-wrap p-3'>
-                    <div className='col-5'>
+                    <div className='col-md-5 col-12'>
                         <div className='col-12 d-flex flex-column mb-3'>
                         <label htmlFor='firstname' className='col-12'>First Name</label>
                         <input
@@ -71,7 +71,7 @@ return (
                         {errors.email && touched.email ? <p style={{ color: 'red' }} className='col-6 text-start my-2'>{errors.email}</p> : null}
                 </div>
                     </div>
-                    <div className='col-6  d-flex flex-wrap '>
+                    <div className='col-md-6 col-12 d-flex justify-content-center flex-wrap '>
                         <label htmlFor='message' className='col-12 d-flex align-self-start'>Message</label>
                         <textarea
                             name='message'
@@ -83,8 +83,9 @@ return (
                             value={values.message}
                         />
                         {errors.message && touched.message ? <p style={{ color: 'red' }} className='col-12 text-start my-2'>{errors.message}</p> : null}
+                        <input type='submit' className='col-md-12 col-6 mt-2  p-2 rounded' value='Submit' />
                     </div>
-                    <input type='submit' className='col-12 p-2 rounded' value='Submit' />
+                   
                 </form>
             </div>
 </div>

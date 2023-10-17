@@ -11,3 +11,8 @@ textarea{
 textarea:focus{
     outline: none;
 }
+@media (max-width:768px) {
+    .contactPage{
+        min-height: 750px;
+    }
+}

@@ -29,14 +29,26 @@ function TopRatedMovies({ TopRatedMovies, title,favourites,hasNextPage,fetchNext
     dots:false,
     infinite: false,
     speed: 500,
-    responsive: [{
+        responsive: [
+            {
     breakpoint: 1700,
     settings: {
         slidesToShow: 4,
         slidesToScroll: 3,
         initialSlide: 3,
     }
-    }]
+        },
+        {
+        breakpoint: 600,
+            settings: {
+            arrows: false,
+            touchMove: true,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+            }
+            }
+        ]
     }
     function handleFavourite(movie:singleMovie){
         dispatch(addFavourite(movie))
@@ -58,23 +70,29 @@ return (
                     </Marquee>
                 </div>
                 <div className="col-10 mt-5 movieContainer">
-                    <Slider className="col-12" {...settings}>
+                    <Slider className="col-12 " {...settings}>
                         {TopRatedMovies.map((movie: singleMovie) => {
-                            return <div key={movie.id} className="col-12 d-flex justify-content-center movieContainer rounded " >
+                            return <div key={movie.id} className="col-12 d-flex justify-content-enter flex-column flex-md-row align-items-cente movieContainer rounded " >
                                 <div className="col-11 d-flex position-relative overflow-hidden rounded topRatedImgBox">
                                     <img className="img-fluid h-100 w-100" alt="movie" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-                                    <div className="col-12 TopRatedFabInfo d-flex align-items-center justify-content-center position-absolute flex-column ">
+                                    <div className="col-12 TopRatedFabInfo d-md-flex align-items-center justify-content-center position-absolute d-none flex-column ">
                                         <Fab onClick={()=>handleFavourite(movie)} className="col-12  FabTopRated " sx={{backgroundColor:'white'}} aria-label="like">
                                     <FavoriteIcon sx={{color:favourites.includes(movie)?'crimson':'#DCDCDC',cursor:'pointer',transition:'0.3s'}} />
                                         </Fab>
-                                        <Link reloadDocument onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className="col-5 mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
+                                        <Link reloadDocument onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className="col-5 mt-3 rounded text-center py-2 SlideMovieLink">Show Movie</Link>
                                     </div>
+                                </div>
+                                <div className="col-12 d-md-none mt-2 d-flex flex-column align-items-center rounded justify-content-center">
+                                    <Fab onClick={()=>handleFavourite(movie)} className="col-12 FabTopRated"  sx={{backgroundColor:'white'}} aria-label="like">
+                                    <FavoriteIcon sx={{color:favourites.includes(movie)?'crimson':'#DCDCDC',cursor:'pointer',transition:'0.3s'}} />
+                                    </Fab>
+                                    <Link onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className="col-9 rounded mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
                                 </div>
                             </div>
                         })}
                         <div>
-                            <div className="col-12 TopRatedshowMoreBox d-flex align-items-center justify-content-center " >
-                                <button disabled={!hasNextPage} onClick={fetchNextPage} className="col-6 showMore p-2 rounded">Show more...</button>
+                            <div className="col-12 TopRatedshowMoreBox d-flex align-items-center justify-content-center rounded " >
+                                <button disabled={!hasNextPage} onClick={fetchNextPage} className="col-md-6 col-9 showMore p-2 rounded">Show more...</button>
                             </div>
                         </div>
                     </Slider>
