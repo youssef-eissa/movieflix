@@ -12,9 +12,11 @@ import { resetMovie, getMovie } from "../redux/SingleMovie";
 type TUpcomingMoviesProps = {
     UpcomingMovies: TheMovie;
     title: string;
-    favourites:FavouritesArray
+    favourites: FavouritesArray;
+    hasNextPage: boolean;
+    fetchNextPage: () => void;
 }
-function UpcomingMovies({ UpcomingMovies, title,favourites }: TUpcomingMoviesProps) {
+function UpcomingMovies({ UpcomingMovies, title,favourites,hasNextPage,fetchNextPage }: TUpcomingMoviesProps) {
     const dispatch=useDispatch()
 
     function handleFavourite(movie:singleMovie){
@@ -24,7 +26,7 @@ function UpcomingMovies({ UpcomingMovies, title,favourites }: TUpcomingMoviesPro
         dispatch(resetMovie())
         dispatch(getMovie(movie))
     }
-    
+
     const settings = {
     dots: false,
     autoplay: true,
@@ -62,12 +64,17 @@ return (
                                     <FavoriteIcon sx={{color:favourites.includes(movie)?'crimson':'#DCDCDC',cursor:'pointer',transition:'0.3s'}} />
                                         </Fab>
                                         </div>
-                                        <Link onClick={()=>handleMovie(movie)} to='/movie' className='col-6 d-flex justify-content-center align-items-center upcomingSlideMovieLink'>Show Movie</Link>
+                                        <Link reloadDocument onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className='col-6 d-flex justify-content-center align-items-center upcomingSlideMovieLink'>Show Movie</Link>
                                     </div>
                                 </div>
-                            
+
                             </div>
                         })}
+                        <div>
+                            <div  className="col-12 d-flex align-items-center justify-content-center upComingMoviesShowMore " >
+                                <button disabled={!hasNextPage} onClick={fetchNextPage} className="col-6 showMore p-2 rounded">Show more...</button>
+                            </div>
+                        </div>
                     </Slider>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import { Link } from "react-router-dom";
 import { TheMovie,FavouritesArray, singleMovie } from "../types/App"
 import './Popular.css'
@@ -9,15 +10,15 @@ import Fab from '@mui/material/Fab';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { addFavourite } from "../redux/Favourites";
 
-
-
 type TPopularProps = {
     Movies: TheMovie;
     Title: string;
     favourites: FavouritesArray;
+    fetchNextPage: () => void;
+    hasNextPage: boolean;
 
 }
-function Popular({ Movies, Title, favourites }: TPopularProps) {
+function Popular({ Movies, Title, favourites,fetchNextPage,hasNextPage, }: TPopularProps) {
     const dispatch = useDispatch()
 
     function handleMovie(movie:singleMovie){
@@ -27,19 +28,19 @@ function Popular({ Movies, Title, favourites }: TPopularProps) {
     function handleFavourite(movie:singleMovie){
         dispatch(addFavourite(movie))
     }
+
     const settings = {
     dots: false,
-    infinite: true,
     speed: 500,
+    infinite:false,
     responsive: [{
     breakpoint: 1700,
     settings: {
         slidesToShow: 4,
         slidesToScroll: 3,
-        initialSlide: 3
+        initialSlide: 1
     }
     }]
-
     }
 
 return (
@@ -53,32 +54,36 @@ return (
             <div className="col-12 p-0 d-flex flex-column align-items-center justify-content-center mb-5">
                 <div className="col-10 rounded overflow-hidden ">
                 <Carousel effect="fade" dots={false} autoplay={true}>
-                {Movies.map((movie:singleMovie) => {
+                {Movies?.map((movie:singleMovie) => {
                     return <div key={movie.id} className="carouselBox col-12 position-relative">
                         <img alt="movieImg" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="img-fluid h-100 w-100 " />
-                    <Link reloadDocument onClick={()=>handleMovie(movie)} className="col-2 text-center py-2 position-absolute toMovie z-3" to='/movie'>Show Film</Link>
+                    <Link reloadDocument onClick={()=>handleMovie(movie)} className="col-2 text-center py-2 position-absolute toMovie z-3" to={`/movie/${movie.original_title}`}>Show Film</Link>
                     </div>
                 })}
                 </Carousel>
                 </div>
                 <div className="col-10 mt-5">
-                    <Slider className="col-12  "  {...settings}>
-                    {Movies.map((movie:singleMovie) => {
-                        return <div key={movie.id} className="col-12 d-flex justify-content-center">
-                            <div className="col-9 position-relative SlideMovieBox">
-                                <img alt="movieImg" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="img-fluid" />
+                    <Slider className="col-12" {...settings}>
+                        {Movies.map((movie:singleMovie) => {
+                            return <div className="d-flex justify-content-center" key={movie.id}>
+                                <div  className="col-10 imgBox position-relative  rounded overflow-hidden SlideMovieBox">
+                                <img alt="movieImg" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="img-fluid h-100" />
                                 <div className="col-12 SlideMovieInfo position-absolute d-flex flex-column align-items-center justify-content-center">
                                 <Fab onClick={()=>handleFavourite(movie)} className="col-12"  sx={{backgroundColor:'white'}} aria-label="like">
                                     <FavoriteIcon sx={{color:favourites.includes(movie)?'crimson':'#DCDCDC',cursor:'pointer',transition:'0.3s'}} />
                                     </Fab>
-                                    <Link onClick={()=>handleMovie(movie)} to='/movie' className="col-5 mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
+                                    <Link onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className="col-5 mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
                                 </div>
                             </div>
+                            </div>
+                        })}
+                        <div >
+                            <div className="col-12 showMoreBox d-flex align-items-center justify-content-center " >
+                                <button disabled={!hasNextPage} onClick={fetchNextPage} className="col-6 showMore p-2 rounded">Show more...</button>
+                            </div>
+                        </div>
+                    </Slider>
 
-                    </div>
-                    })}
-
-    </Slider>
                 </div>
             </div>
         </div>
@@ -87,5 +92,8 @@ return (
 }
 
 export default Popular
+
+
+
 
 

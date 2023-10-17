@@ -15,9 +15,11 @@ type TTopMovies = {
     TopRatedMovies: TheMovie;
     title: string;
     favourites: FavouritesArray;
+    hasNextPage: boolean;
+    fetchNextPage: () => void;
 
 }
-function TopRatedMovies({ TopRatedMovies, title,favourites }: TTopMovies) {
+function TopRatedMovies({ TopRatedMovies, title,favourites,hasNextPage,fetchNextPage }: TTopMovies) {
     const dispatch=useDispatch()
     function handleMoviePage(movie:singleMovie) {
         dispatch(resetMovie())
@@ -25,14 +27,14 @@ function TopRatedMovies({ TopRatedMovies, title,favourites }: TTopMovies) {
     }
     const settings = {
     dots:false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     responsive: [{
     breakpoint: 1700,
     settings: {
         slidesToShow: 4,
         slidesToScroll: 3,
-        initialSlide: 3
+        initialSlide: 3,
     }
     }]
     }
@@ -51,7 +53,7 @@ return (
                 <div className="col-10 my-3">
                     <Marquee pauseOnHover={true} className="col-12 d-flex ">
                         {TopRatedMovies.map((movie: singleMovie) => {
-                            return <Link key={movie.id} onClick={()=>handleMoviePage(movie)} reloadDocument to='/movie' className=" marqueeTitle col-12 me-5 text-center ">{ movie.original_title} </Link>
+                            return <Link key={movie.id} onClick={()=>handleMoviePage(movie)} reloadDocument to={`/movie/${movie.original_title}`} className=" marqueeTitle col-12 me-5 text-center ">{ movie.original_title} </Link>
                         })}
                     </Marquee>
                 </div>
@@ -59,17 +61,22 @@ return (
                     <Slider className="col-12" {...settings}>
                         {TopRatedMovies.map((movie: singleMovie) => {
                             return <div key={movie.id} className="col-12 d-flex justify-content-center movieContainer rounded " >
-                                <div onClick={()=>handleMoviePage(movie)} className="col-11 d-flex position-relative overflow-hidden rounded topRatedImgBox">
+                                <div className="col-11 d-flex position-relative overflow-hidden rounded topRatedImgBox">
                                     <img className="img-fluid h-100 w-100" alt="movie" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
                                     <div className="col-12 TopRatedFabInfo d-flex align-items-center justify-content-center position-absolute flex-column ">
                                         <Fab onClick={()=>handleFavourite(movie)} className="col-12  FabTopRated " sx={{backgroundColor:'white'}} aria-label="like">
                                     <FavoriteIcon sx={{color:favourites.includes(movie)?'crimson':'#DCDCDC',cursor:'pointer',transition:'0.3s'}} />
                                         </Fab>
-                                        <Link onClick={()=>handleMovie(movie)} to='/movie' className="col-5 mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
+                                        <Link reloadDocument onClick={()=>handleMovie(movie)} to={`/movie/${movie.original_title}`} className="col-5 mt-3 text-center py-2 SlideMovieLink">Show Movie</Link>
                                     </div>
                                 </div>
                             </div>
                         })}
+                        <div>
+                            <div className="col-12 TopRatedshowMoreBox d-flex align-items-center justify-content-center " >
+                                <button disabled={!hasNextPage} onClick={fetchNextPage} className="col-6 showMore p-2 rounded">Show more...</button>
+                            </div>
+                        </div>
                     </Slider>
                 </div>
             </div>

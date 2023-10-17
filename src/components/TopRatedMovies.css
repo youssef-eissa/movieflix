@@ -20,6 +20,16 @@
 .topRatedImgBox:hover .TopRatedFabInfo{
     height: 100%;
 }
+.TopRatedshowMoreBox{
+    height: 800px;
+}
+.TopRatedshowMoreBox button {
+    background-color: crimson;
+    transition: 0.3s;
+}
+.TopRatedshowMoreBox button:hover {
+    background-color: black;
+}
 
 
 .TopRatedFabInfo{

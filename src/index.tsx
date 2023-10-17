@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -8,15 +7,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Provider } from 'react-redux'
-import { ApiProvider } from '@reduxjs/toolkit/query/react'
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage';
 import { BrowserRouter } from 'react-router-dom';
-import popularMoviesApi from './redux/MoviesAPI';
 import { MovieReducer } from './redux/SingleMovie';
 import { FavouritesReducer } from './redux/Favourites';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+
+  const client=new QueryClient()
+
 
 const persistConfig = {
   key: 'root',
@@ -27,26 +29,31 @@ const persistConfig = {
 const reducer=combineReducers({
   TheMovie: MovieReducer,
   FavouritesArray: FavouritesReducer,
-  [popularMoviesApi.reducerPath]:popularMoviesApi.reducer
+  
 })
+
 const thePersisReducer = persistReducer(persistConfig, reducer)
+
 const store = configureStore({
   reducer: thePersisReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}).concat(popularMoviesApi.middleware),})
+  middleware: (getDefaultMiddleware) =>getDefaultMiddleware({
+    serializableCheck:false
+  })
+})
 const persistor = persistStore(store)
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <BrowserRouter>
-    <ApiProvider api={popularMoviesApi}>
+  <QueryClientProvider client={client}>
+    <BrowserRouter>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <App />
       </PersistGate>
       </Provider>
-    </ApiProvider>
   </BrowserRouter>
+  </QueryClientProvider>
 );
 
 

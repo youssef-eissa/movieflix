@@ -1,6 +1,17 @@
 .UpcomingMovieBox{
     height: 500px;
 }
+.upComingMoviesShowMore{
+    height: 500px;
+}
+.upComingMoviesShowMore button{
+    background-color: crimson;
+    transition: 0.3s;
+}
+.upComingMoviesShowMore button:hover{
+    background-color: black;
+}
+
 .upcomingSlideMovieLink{
     background-color: crimson;
     color: white;

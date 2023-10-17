@@ -13,11 +13,11 @@ function SingleMovie({movie}:TheMovie) {
 console.log(movie);
 
 return (
-    <div className='container vh-100'>
+    <div className='container min-vh-100'>
         <div className='row'>
             <div className='col-12 p-2 d-flex  justify-content-center'>
-                <div className="col-6 rounded overflow-hidden p-0 d-flex flex-wrap  ">
-                    <Link reloadDocument to='/' className="col-12 mb-3" style={{textDecoration:'none', color:'gray'}}>Back to home</Link>
+                <div className="col-6 rounded overflow-hidden p-0 d-flex flex-wrap   ">
+                    <Link reloadDocument to='/' className="col-3 mb-0 d-flex align-self-start" style={{textDecoration:'none', color:'gray'}}>Back to home</Link>
                     <div className="col-10 rounded overflow-hidden">
                         <img alt="movieImg" className="img-fluid w-100 h-100 " src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}/>
                 </div>

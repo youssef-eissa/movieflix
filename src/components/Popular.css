@@ -42,3 +42,21 @@
 .SlideMovieLink:hover{
     background-color: rgb(51, 51, 51);
 }
+.showMore{
+    background-color: crimson;
+    border: none;
+    color: white;
+}
+.imgBox{
+    height: 400px;
+}
+.showMoreBox{
+    height: 400px;
+}
+.showMoreBox button {
+    background-color: crimson;
+    transition: 0.3s;
+}
+.showMoreBox button:hover {
+    background-color: black;
+}
